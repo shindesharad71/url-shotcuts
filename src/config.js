@@ -4,7 +4,7 @@
 
 // GitHub repository URL for the URLs JSON file
 // Replace with your actual GitHub username and repository
-export const GITHUB_JSON_URL = 'https://raw.githubusercontent.com/shindesharad71/url-shotcuts/master/src/assets/urls.json';
+export const GITHUB_JSON_URL = 'https://raw.githubusercontent.com/shindesharad71/url-shotcuts/refs/heads/master/src/assets/urls.json';
 
 // Redirection delay in milliseconds
 export const REDIRECT_DELAY = 1500;
