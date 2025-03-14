@@ -17,13 +17,8 @@ onMounted(() => {
 <template>
   <div class="container">
     <div class="content-wrapper">
-      <UrlShortener />
+      <UrlShortener :brandName="brandName" :origin="origin" />
     </div>
-    <footer>
-      <div class="container">
-        <p>&copy; {{ new Date().getFullYear() }} <a :href="origin" class="button button-clear">{{ brandName }}</a></p>
-      </div>
-    </footer>
   </div>
 </template>
 
@@ -31,7 +26,8 @@ onMounted(() => {
 html, body {
   height: 100%;
   margin: 0;
-  background-color: #f0f2f5;
+  background-color: #121212;
+  color: #e0e0e0;
 }
 
 .container {
@@ -42,29 +38,35 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 60px);
+  min-height: 100vh;
 }
 
-footer {
-  text-align: center;
-  padding: 15px 0;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
+/* Override Milligram styles for dark theme */
+a {
+  color: #738adb;
 }
 
-footer .button-clear {
-  color: #4361ee;
-  font-weight: bold;
-  margin: 0;
-  padding: 0;
-  height: auto;
+code {
+  background-color: #2a2a2a;
+  color: #ff79c6;
 }
 
-footer .button-clear:hover {
+button.button-clear {
+  color: #738adb;
+}
+
+.creator {
+  font-size: 0.9rem;
+  color: #999;
+  margin-top: 1rem;
+}
+
+.creator a {
+  color: #738adb;
+  text-decoration: none;
+}
+
+.creator a:hover {
   text-decoration: underline;
 }
 </style>

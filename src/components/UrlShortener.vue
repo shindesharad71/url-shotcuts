@@ -3,6 +3,12 @@ import { ref, onMounted } from 'vue';
 import urlsData from '../assets/urls.json';
 import { GITHUB_JSON_URL, REDIRECT_DELAY, DEFAULT_SETTINGS } from '../config';
 
+// Props from parent
+const props = defineProps({
+  brandName: String,
+  origin: String
+});
+
 // State
 const urls = ref({});
 const baseUrl = ref('');
@@ -125,58 +131,73 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="card">
+  <div class="content">
     <div v-if="isRedirecting">
       <div class="spinner"></div>
-      <h1>Redirecting...</h1>
+      <h1>🚀 Redirecting...</h1>
       <p>
         <code>{{ redirectCode }}</code> → <a :href="redirectUrl" class="button button-clear">{{ redirectUrl }}</a>
       </p>
     </div>
     <div v-else-if="isLoading">
       <div class="spinner"></div>
-      <h2>Loading...</h2>
+      <h2>⏳ Loading...</h2>
     </div>
     <div v-else>
-      <h1>Personal URL Shortcuts</h1>
+      <h1>🔗 Personal URL Shortcuts</h1>
+      <p class="creator">
+        Created by <a href="https://shrd.in" target="_blank" rel="noopener noreferrer">Sharad</a>
+      </p>
       <p>
         A simple URL shortener for quick access to your favorite websites.
         <br>
-        Use the format: <code>{{ baseUrl }}/shortcode</code>
+        Use the format: <code>{{ baseUrl }}/shortcode</code> ✨
       </p>
       <div v-if="error" class="error-message">
-        {{ error }}
+        ❌ {{ error }}
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
-.card {
-  background-color: white;
-  padding: 4rem 2rem;
-  border-radius: 0.4rem;
-  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
+.content {
   text-align: center;
   max-width: 60rem;
+  padding: 2rem;
+}
+
+h1, h2 {
+  color: #e0e0e0;
+}
+
+p {
+  color: #b0b0b0;
+}
+
+.creator {
+  font-size: 1rem;
+  color: #999;
+  margin-top: 0;
+  margin-bottom: 2rem;
 }
 
 .spinner {
-  border: 0.4rem solid rgba(0, 0, 0, 0.1);
+  border: 0.4rem solid rgba(255, 255, 255, 0.1);
   width: 3.6rem;
   height: 3.6rem;
   border-radius: 50%;
-  border-left-color: #4361ee;
+  border-left-color: #738adb;
   animation: spin 1s linear infinite;
   margin: 0 auto 2rem;
 }
 
 .error-message {
-  color: #e74c3c;
+  color: #ff6b6b;
   margin-top: 2rem;
   padding: 1rem;
-  background-color: #fdf2f2;
   border-radius: 0.4rem;
+  background-color: rgba(255, 107, 107, 0.1);
 }
 
 @keyframes spin {
