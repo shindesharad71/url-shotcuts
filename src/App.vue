@@ -17,7 +17,7 @@ onMounted(() => {
 <template>
   <div class="container">
     <div class="content-wrapper">
-      <UrlShortener />
+      <UrlShortener :brandName="brandName" :origin="origin" />
     </div>
   </div>
 </template>
@@ -38,7 +38,7 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 60px);
+  min-height: 100vh;
 }
 
 /* Override Milligram styles for dark theme */
@@ -53,5 +53,20 @@ code {
 
 button.button-clear {
   color: #738adb;
+}
+
+.creator {
+  font-size: 0.9rem;
+  color: #999;
+  margin-top: 1rem;
+}
+
+.creator a {
+  color: #738adb;
+  text-decoration: none;
+}
+
+.creator a:hover {
+  text-decoration: underline;
 }
 </style>

@@ -3,6 +3,12 @@ import { ref, onMounted } from 'vue';
 import urlsData from '../assets/urls.json';
 import { GITHUB_JSON_URL, REDIRECT_DELAY, DEFAULT_SETTINGS } from '../config';
 
+// Props from parent
+const props = defineProps({
+  brandName: String,
+  origin: String
+});
+
 // State
 const urls = ref({});
 const baseUrl = ref('');
@@ -139,6 +145,9 @@ onMounted(async () => {
     </div>
     <div v-else>
       <h1>🔗 Personal URL Shortcuts</h1>
+      <p class="creator">
+        Created by <a href="https://shrd.in" target="_blank" rel="noopener noreferrer">Sharad</a>
+      </p>
       <p>
         A simple URL shortener for quick access to your favorite websites.
         <br>
@@ -164,6 +173,13 @@ h1, h2 {
 
 p {
   color: #b0b0b0;
+}
+
+.creator {
+  font-size: 1rem;
+  color: #999;
+  margin-top: 0;
+  margin-bottom: 2rem;
 }
 
 .spinner {
