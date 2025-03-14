@@ -39,27 +39,4 @@ html, body {
   align-items: center;
   min-height: calc(100vh - 60px);
 }
-
-footer {
-  text-align: center;
-  padding: 15px 0;
-  background-color: #f8f9fa;
-  border-top: 1px solid #e9ecef;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-}
-
-footer .button-clear {
-  color: #4361ee;
-  font-weight: bold;
-  margin: 0;
-  padding: 0;
-  height: auto;
-}
-
-footer .button-clear:hover {
-  text-decoration: underline;
-}
 </style>

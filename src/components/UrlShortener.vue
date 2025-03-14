@@ -128,24 +128,24 @@ onMounted(async () => {
   <div class="card">
     <div v-if="isRedirecting">
       <div class="spinner"></div>
-      <h1>Redirecting...</h1>
+      <h1>🚀 Redirecting...</h1>
       <p>
         <code>{{ redirectCode }}</code> → <a :href="redirectUrl" class="button button-clear">{{ redirectUrl }}</a>
       </p>
     </div>
     <div v-else-if="isLoading">
       <div class="spinner"></div>
-      <h2>Loading...</h2>
+      <h2>⏳ Loading...</h2>
     </div>
     <div v-else>
-      <h1>Personal URL Shortcuts</h1>
+      <h1>🔗 Personal URL Shortcuts</h1>
       <p>
         A simple URL shortener for quick access to your favorite websites.
         <br>
-        Use the format: <code>{{ baseUrl }}/shortcode</code>
+        Use the format: <code>{{ baseUrl }}/shortcode</code> ✨
       </p>
       <div v-if="error" class="error-message">
-        {{ error }}
+        ❌ {{ error }}
       </div>
     </div>
   </div>
