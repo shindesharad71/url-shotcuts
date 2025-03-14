@@ -26,8 +26,8 @@ onMounted(() => {
 html, body {
   height: 100%;
   margin: 0;
-  background-color: #ffffff;
-  color: #333333;
+  background-color: #121212;
+  color: #e0e0e0;
 }
 
 .container {
@@ -39,5 +39,19 @@ html, body {
   justify-content: center;
   align-items: center;
   min-height: calc(100vh - 60px);
+}
+
+/* Override Milligram styles for dark theme */
+a {
+  color: #738adb;
+}
+
+code {
+  background-color: #2a2a2a;
+  color: #ff79c6;
+}
+
+button.button-clear {
+  color: #738adb;
 }
 </style>

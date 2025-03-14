@@ -158,21 +158,30 @@ onMounted(async () => {
   padding: 2rem;
 }
 
+h1, h2 {
+  color: #e0e0e0;
+}
+
+p {
+  color: #b0b0b0;
+}
+
 .spinner {
-  border: 0.4rem solid rgba(0, 0, 0, 0.1);
+  border: 0.4rem solid rgba(255, 255, 255, 0.1);
   width: 3.6rem;
   height: 3.6rem;
   border-radius: 50%;
-  border-left-color: #4361ee;
+  border-left-color: #738adb;
   animation: spin 1s linear infinite;
   margin: 0 auto 2rem;
 }
 
 .error-message {
-  color: #e74c3c;
+  color: #ff6b6b;
   margin-top: 2rem;
   padding: 1rem;
   border-radius: 0.4rem;
+  background-color: rgba(255, 107, 107, 0.1);
 }
 
 @keyframes spin {
