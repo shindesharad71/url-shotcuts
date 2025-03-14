@@ -26,7 +26,8 @@ onMounted(() => {
 html, body {
   height: 100%;
   margin: 0;
-  background-color: #f0f2f5;
+  background-color: #ffffff;
+  color: #333333;
 }
 
 .container {

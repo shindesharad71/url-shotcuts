@@ -125,7 +125,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="card">
+  <div class="content">
     <div v-if="isRedirecting">
       <div class="spinner"></div>
       <h1>🚀 Redirecting...</h1>
@@ -152,13 +152,10 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.card {
-  background-color: white;
-  padding: 4rem 2rem;
-  border-radius: 0.4rem;
-  box-shadow: 0 0.2rem 1rem rgba(0, 0, 0, 0.1);
+.content {
   text-align: center;
   max-width: 60rem;
+  padding: 2rem;
 }
 
 .spinner {
@@ -175,7 +172,6 @@ onMounted(async () => {
   color: #e74c3c;
   margin-top: 2rem;
   padding: 1rem;
-  background-color: #fdf2f2;
   border-radius: 0.4rem;
 }
 
