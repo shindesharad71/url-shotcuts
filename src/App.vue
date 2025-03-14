@@ -19,11 +19,6 @@ onMounted(() => {
     <div class="content-wrapper">
       <UrlShortener />
     </div>
-    <footer>
-      <div class="container">
-        <p>&copy; {{ new Date().getFullYear() }} <a :href="origin" class="button button-clear">{{ brandName }}</a></p>
-      </div>
-    </footer>
   </div>
 </template>
 
