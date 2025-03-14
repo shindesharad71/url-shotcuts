@@ -8,19 +8,51 @@
     <meta name="description" content="Quick access to your favorite websites with simple, memorable shortcuts">
     <meta name="keywords" content="URL shortener, personal shortcuts, quick links, bookmarks">
     <meta name="theme-color" content="#121212">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <meta property="og:title" content="URL Shortcuts">
+    <meta property="og:description" content="Quick access to your favorite websites with simple, memorable shortcuts">
+    <meta property="og:image" content="/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="">
+    <meta name="twitter:title" content="URL Shortcuts">
+    <meta name="twitter:description" content="Quick access to your favorite websites with simple, memorable shortcuts">
+    <meta name="twitter:image" content="/og-image.png">
+    
     <title>🔗 URL Shortcuts</title>
     <script>
-      // Dynamically update the title with the current domain
+      // Dynamically update the title and meta tags with the current domain
       document.addEventListener('DOMContentLoaded', function() {
         try {
           const hostname = window.location.hostname;
+          const origin = window.location.origin;
+          
+          // Update title
           if (hostname !== 'localhost') {
             document.title = '🔗 ' + hostname + ' | Quick Links';
+            
+            // Update meta tags
+            document.querySelector('meta[property="og:title"]').setAttribute('content', hostname + ' | Quick Links');
+            document.querySelector('meta[name="twitter:title"]').setAttribute('content', hostname + ' | Quick Links');
           } else {
             document.title = '🔗 Personal URL Shortcuts';
           }
+          
+          // Set URL in meta tags
+          document.querySelector('meta[property="og:url"]').setAttribute('content', origin);
+          document.querySelector('meta[name="twitter:url"]').setAttribute('content', origin);
+          
+          // Set absolute path for images
+          document.querySelector('meta[property="og:image"]').setAttribute('content', origin + '/og-image.png');
+          document.querySelector('meta[name="twitter:image"]').setAttribute('content', origin + '/og-image.png');
         } catch (e) {
-          console.error('Error updating title:', e);
+          console.error('Error updating meta tags:', e);
         }
       });
     </script>

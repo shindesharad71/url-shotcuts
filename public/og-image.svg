@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#121212"/>
+  <g transform="translate(600, 315)">
+    <!-- Link icon -->
+    <path d="M-50 -25 a50 50 0 0 0 75.54 5.4l30 -30a50 50 0 0 0 -70.7 -70.7l-17.2 17.1" 
+          stroke="#738adb" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M50 25 a50 50 0 0 0 -75.54 -5.4l-30 30a50 50 0 0 0 70.7 70.7l17.1 -17.1" 
+          stroke="#738adb" stroke-width="20" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="600" y="450" font-family="Arial, sans-serif" font-size="60" font-weight="bold" fill="#e0e0e0" text-anchor="middle">URL Shortcuts</text>
+  <text x="600" y="520" font-family="Arial, sans-serif" font-size="32" fill="#b0b0b0" text-anchor="middle">Quick access to your favorite websites</text>
+</svg> 
