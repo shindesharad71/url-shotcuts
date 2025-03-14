@@ -2,18 +2,22 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8">
-    <link rel="icon" href="/favicon.ico">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A simple personal URL shortener that runs entirely in the browser">
-    <meta name="keywords" content="URL shortener, personal shortcuts, quick links">
-    <title>Personal URL Shortener</title>
+    <meta name="description" content="Quick access to your favorite websites with simple, memorable shortcuts">
+    <meta name="keywords" content="URL shortener, personal shortcuts, quick links, bookmarks">
+    <meta name="theme-color" content="#4361ee">
+    <title>🔗 URL Shortcuts</title>
     <script>
       // Dynamically update the title with the current domain
       document.addEventListener('DOMContentLoaded', function() {
         try {
           const hostname = window.location.hostname;
           if (hostname !== 'localhost') {
-            document.title = hostname + ' - Personal Shortcuts';
+            document.title = '🔗 ' + hostname + ' | Quick Links';
+          } else {
+            document.title = '🔗 Personal URL Shortcuts';
           }
         } catch (e) {
           console.error('Error updating title:', e);
