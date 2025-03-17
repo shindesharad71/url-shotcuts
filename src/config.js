@@ -7,7 +7,7 @@
 export const GITHUB_JSON_URL = 'https://raw.githubusercontent.com/shindesharad71/url-shotcuts/refs/heads/master/src/assets/urls.json';
 
 // Redirection delay in milliseconds
-export const REDIRECT_DELAY = 700;
+export const REDIRECT_DELAY = 100;
 
 // Default application settings
 export const DEFAULT_SETTINGS = {
