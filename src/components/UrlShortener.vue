@@ -63,6 +63,42 @@ async function fetchUrlsFromGithub() {
   }
 }
 
+// Find URL for a shortcode using local-first approach
+async function findUrl(code) {
+  // 1. Check localStorage first if enabled
+  if (DEFAULT_SETTINGS.useLocalStorageFallback) {
+    const savedUrls = localStorage.getItem('shortUrls');
+    if (savedUrls) {
+      const localUrls = JSON.parse(savedUrls);
+      if (localUrls[code]) {
+        console.log('URL found in localStorage');
+        return localUrls[code];
+      }
+    }
+  }
+
+  // 2. Check local urls.json file
+  if (urlsData.urls && urlsData.urls[code]) {
+    console.log('URL found in local urls.json');
+    return urlsData.urls[code];
+  }
+
+  // 3. Check GitHub only if enabled and URL not found locally
+  if (DEFAULT_SETTINGS.useGithub) {
+    try {
+      const githubUrls = await fetchUrlsFromGithub();
+      if (githubUrls[code]) {
+        console.log('URL found in GitHub');
+        return githubUrls[code];
+      }
+    } catch (err) {
+      console.error('Error fetching from GitHub:', err);
+    }
+  }
+
+  return null;
+}
+
 // Load URLs on component mount
 onMounted(async () => {
   // Set the base URL
@@ -75,30 +111,7 @@ onMounted(async () => {
     redirectCode.value = code;
     
     try {
-      let urlsToUse = {};
-      
-      // Try to get from localStorage if enabled
-      if (DEFAULT_SETTINGS.useLocalStorageFallback) {
-        const savedUrls = localStorage.getItem('shortUrls');
-        if (savedUrls) {
-          urlsToUse = JSON.parse(savedUrls);
-        }
-      }
-      
-      // Fetch URLs from GitHub if enabled
-      if (DEFAULT_SETTINGS.useGithub) {
-        const githubUrls = await fetchUrlsFromGithub();
-        // Merge URLs with priority to localStorage
-        urlsToUse = { ...githubUrls, ...urlsToUse };
-      } else if (Object.keys(urlsToUse).length === 0) {
-        // If GitHub is disabled and no localStorage, use local data
-        urlsToUse = urlsData.urls || {};
-      }
-      
-      urls.value = urlsToUse;
-      
-      // Check if the code exists in our URLs
-      const originalUrl = urls.value[code];
+      const originalUrl = await findUrl(code);
       if (originalUrl) {
         // Show redirection message
         isRedirecting.value = true;
@@ -119,13 +132,13 @@ onMounted(async () => {
       isLoading.value = false;
     }
   } else {
-    // Just load the URLs for the homepage
-    if (DEFAULT_SETTINGS.useGithub) {
-      urls.value = await fetchUrlsFromGithub();
-    } else {
-      urls.value = urlsData.urls || {};
-      isLoading.value = false;
-    }
+    // Just load all URLs for reference
+    urls.value = {
+      ...(urlsData.urls || {}),
+      ...(DEFAULT_SETTINGS.useLocalStorageFallback ? JSON.parse(localStorage.getItem('shortUrls') || '{}') : {}),
+      ...(DEFAULT_SETTINGS.useGithub ? await fetchUrlsFromGithub() : {})
+    };
+    isLoading.value = false;
   }
 });
 </script>
